@@ -7,7 +7,22 @@ contextBridge.exposeInMainWorld('versions', {
 })
 
 contextBridge.exposeInMainWorld('dialogTest', {
-    openDialog: async () => {
-        return await ipcRenderer.invoke('dialog')
+    handleInput: async () => {
+        return await ipcRenderer.invoke('handleInput')
+    },
+    serial: async () => {
+        return await ipcRenderer.invoke('serial')
+    },
+    handleOutput: async () => {
+        return await ipcRenderer.invoke('handleOutput')
+    },
+    deviceConf: async () => {
+        return await ipcRenderer.invoke('deviceConf')
+    },
+    runScript: async () => {
+        return await ipcRenderer.invoke('runScript')
+    },
+    test: async (file) => {
+        return await ipcRenderer.invoke('inputFile', file)
     }
 })

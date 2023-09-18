@@ -4,14 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello from Electro renderer!</title>
+    <title>Muc500Editor</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 
 <body>
-    <h1>Test</h1>
-    <p id="info"></p>
-    <h3>File Upload in Electron</h3>
-    <button id="upload">Upload File</button>
+    <h3>Device Handle File hochladen (Device_Handle.cfg)</h3>
+    <button id="handleInput" hidden>File wählen</button>
+    <input type="file" id="fileItem"/>
+    <h3>Zielordner für Device Handle Output (z.B. Dokumente)</h3>
+    <button id="handleOutput">Ordner wählen</button>
+    <h3>CSV Datei mit serial-Nummern (meter-conf.csv)</h3>
+    <button id="serialToAks">File wählen</button>
+    <h3>Ordner mit Device-Config Dateien (device_configs/)</h3>
+    <button id="deviceConf">Ordner wälhen</button>
+    <button onclick="runScript()">Ok</button>
 </body>
 <script src="./renderer.js"></script>
 
