@@ -131,3 +131,6 @@ dist
 .pnp.*
 
 *.cfg
+input
+device_configs
+resources
