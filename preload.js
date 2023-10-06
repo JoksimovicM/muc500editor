@@ -1,28 +1,22 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
-contextBridge.exposeInMainWorld('versions', {
-    node: () => process.versions.node,
-    chrome: () => process.versions.chrome,
-    electron: () => process.versions.electron
-})
-
-contextBridge.exposeInMainWorld('dialogTest', {
-    handleInput: async () => {
-        return await ipcRenderer.invoke('handleInput')
-    },
-    serial: async () => {
-        return await ipcRenderer.invoke('serial')
-    },
-    handleOutput: async () => {
-        return await ipcRenderer.invoke('handleOutput')
-    },
-    deviceConf: async () => {
-        return await ipcRenderer.invoke('deviceConf')
+contextBridge.exposeInMainWorld('dialog', {
+    serial: async (filePath) => {
+        return await ipcRenderer.invoke('serialToAks', filePath)
     },
     runScript: async () => {
         return await ipcRenderer.invoke('runScript')
     },
-    test: async (file) => {
-        return await ipcRenderer.invoke('inputFile', file)
+    handleInput: async (filePath) => {
+        return await ipcRenderer.invoke('handleInput', filePath)
+    },
+    importConfig: async () => {
+        return await ipcRenderer.invoke('importConfig')
+    },
+    exportConfigs: async () => {
+        return await ipcRenderer.invoke('exportConfigs')
+    },
+    showConfigs: async () => {
+        return await ipcRenderer.invoke('showConfigs')
     }
 })
