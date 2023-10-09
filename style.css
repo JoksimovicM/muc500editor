@@ -104,3 +104,8 @@ input[type="file"]::file-selector-button:active {
 #deviceButtons {
     margin-top: 3vw;
 }
+
+#runScript {
+    opacity: 50%;
+    pointer-events: none;
+}

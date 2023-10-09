@@ -7,6 +7,12 @@ fileItem.addEventListener('change', async () => {
     serialElements.item(0).style.pointerEvents = "all"
 })
 
+const okBtn = document.getElementById('runScript')
+okBtn.addEventListener('click', async () => {
+    const response = await window.dialog.runScript()
+    location.reload()
+})
+
 const serialFile = document.getElementById('serialFile')
 serialFile.addEventListener('change', async () => {
     const file = serialFile.files[0]
@@ -15,13 +21,11 @@ serialFile.addEventListener('change', async () => {
         serialFile.value = ""
     }
     console.log(response)
+    okBtn.style.opacity = "1"
+    okBtn.style.pointerEvents = "all"
 })
 
-const okBtn = document.getElementById('runScript')
-okBtn.addEventListener('click', async () => {
-    const response = await window.dialog.runScript()
-    location.reload()
-})
+
 
 const importBtn = document.getElementById('importConfigs')
 importBtn.addEventListener('click', async () => {
