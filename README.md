@@ -4,7 +4,7 @@ The muc500editor is an app created with Electron JS. The goal for this app is to
 
 ## Table of contents
 
-<!--ts-->
+<!-- TABLE OF CONTENTS -->
   * [Installation](#installation)
   * [Usage](#usage)
     * [Device Config Import](#device-config-import)
@@ -14,22 +14,65 @@ The muc500editor is an app created with Electron JS. The goal for this app is to
     * [Upload Device Handle](#upload-device-handle)
     * [Upload Meter Conf](#upload-meter-conf)
     * [Meter Conf Format](#meter-conf-format)
-<!--te-->
 
+<!-- INSTALLATION -->
 ## Installation
 
 ## Usage
 
 ### Device Config Import
+When uploading one or multiplie device configs, it's important to make sure that the format is correct. The format can be found under [Device Config Format](#device-config-format)
+```
+
+```
+
+<img src="images/docs/device-config-import/press-import.png" width="500">
+<img src="images/docs/device-config-import/choose-config.png" width="500">
+<img src="images/docs/device-config-import/import-successful.png" width="500">
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
 
 ### Device Config Export
 
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
+
 ### Show Device Configs
 
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
+
 ### Device Config Format
+The Device Configs are saved in a JSON-Format. The **filename** is a combination of the short form of the manufacturer, like **SON** and the version number like **25** -> **SON_25.device_conf**
+
+<img src="images/docs/device-config-format.png" height="300">
+
+One device can contain multiple measurement definitions. The structure of one measurement looks like this:
+```js
+"index": {
+    "userscale": number,
+    "userlabel": text
+}
+```
+
+- index: The index in the Device Config is the same as the one in the Solvimus (See image below)
+- userscale: With which scale should the data be uploaded
+- userlabel: The label of the measurement e.g. 'MW01'
+<img src="images/docs/device-config-format-index.png" height="300">
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
 
 ### Upload Device Handle
 
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
+
 ### Upload Meter Conf
 
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
+
 ### Meter Conf Format
+
+
+<p align="right">(<a href="#muc500editor">back to top</a>)</p>
