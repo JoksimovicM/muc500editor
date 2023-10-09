@@ -1,6 +1,6 @@
 # muc500editor
 
-Beschreibung vom Projekt palim was macht das
+The muc500editor is an app created with Electron JS. The goal for this app is to simplify a repetitive process of editing XML-Files containing configs for devices. These devices are often of the same type and therefore have the same configuration. Instead of editing these devices over and over again, the app makes use of Device Configs, JSON-Files, and applies these to the XML-File handed to the app.
 
 ## Table of contents
 
