@@ -21,13 +21,18 @@ The muc500editor is an app created with Electron JS. The goal for this app is to
 ## Usage
 
 ### Device Config Import
-When uploading one or multiplie device configs, it's important to make sure that the format is correct. The format can be found under [Device Config Format](#device-config-format)
-```
+When uploading one or multiplie device configs, it's important to make sure that the format is correct. The format can be found under [Device Config Format](#device-config-format).
 
-```
-
+<p>Open settings</p>
+<img src="images/docs/open-settings.png" width="500">
+<p></p>
+<p>Click 'Import Device Configs'</p>
 <img src="images/docs/device-config-import/press-import.png" width="500">
+<p></p>
+<p>Select Device Config</p>
 <img src="images/docs/device-config-import/choose-config.png" width="500">
+<p></p>
+<p>Popup if import was succcessful</p>
 <img src="images/docs/device-config-import/import-successful.png" width="500">
 
 <p align="right">(<a href="#muc500editor">back to top</a>)</p>
