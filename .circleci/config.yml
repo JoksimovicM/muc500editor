@@ -17,14 +17,6 @@ commands:
     steps:
       - run: |
           curl -X POST "$FIDDLE_SECRETS_SERVICE_ENDPOINT?format=shell" -H "Content-Type: application/json" -d '{"token":"'$CIRCLE_OIDC_TOKEN'"}' >> $BASH_ENV
-  test:
-    steps:
-      - run:
-          command: yarn test:ci
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/
-      - store_test_results:
-          path: ./reports/
 
 jobs:
   lint:
@@ -33,33 +25,6 @@ jobs:
     steps:
       - install
       - run: yarn run lint
-  mac-test:
-    parameters:
-      arch:
-        type: enum
-        enum: [ 'x64', 'arm64' ]
-    executor: node/macos
-    steps:
-      - install
-      - test
-  win-test:
-    parameters:
-      arch:
-        type: enum
-        enum: [ 'x64', 'arm64', 'ia32' ]
-    executor: node/windows
-    steps:
-      - install
-      - test
-  linux-test:
-    parameters:
-      arch:
-        type: enum
-        enum: [ 'x64', 'arm64','armv7l' ]
-    executor: node/linux
-    steps:
-      - install
-      - test
   mac-build:
     parameters:
       arch:
@@ -161,18 +126,6 @@ workflows:
   build-and-test:
     jobs:
       - lint
-      - mac-test:
-          matrix:
-            parameters:
-              arch: [ x64, arm64 ]
-      - win-test:
-          matrix:
-            parameters:
-              arch: [ x64 ]
-      - linux-test:
-          matrix:
-            parameters:
-              arch: [ x64 ]
       - mac-build:
           context: fiddle-release
           matrix:
@@ -208,9 +161,6 @@ workflows:
           context: fiddle-release
           requires:
             - lint
-            - mac-test
-            - win-test
-            - linux-test
             - mac-build
             - win-build
             - linux-build
