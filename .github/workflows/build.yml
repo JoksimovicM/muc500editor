@@ -37,11 +37,11 @@ jobs:
         run: npm run make --arch=${{ matrix.arch }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Archive production artifacts
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: ${{ matrix.os }}
-      #     path: out/make/**/*
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+         name: ${{ matrix.os }}
+         path: out/make/**/*
       - name: Release
         uses: softprops/action-gh-release@v1 # v1
         env:
