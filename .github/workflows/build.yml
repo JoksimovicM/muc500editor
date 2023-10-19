@@ -34,7 +34,10 @@ jobs:
       - name: Install
         run: npm ci
       - name: Make
-        run: npm run make --arch=${{ matrix.arch }}
+        run: |
+          npm config set fetch-retry-mintimeout 100000
+          npm config set fetch-retry-maxtimeout 600000
+          npm run make --arch=${{ matrix.arch }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Archive production artifacts
