@@ -28,4 +28,17 @@ module.exports = {
       config: {},
     },
   ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'JoksimovicM',
+          name: 'muc500editor'
+        },
+        prerelease: false,
+        draft: true
+      }
+    }
+  ]
 };

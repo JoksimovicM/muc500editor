@@ -7,7 +7,8 @@
     "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "author": "Joa",
   "license": "ISC",
@@ -18,7 +19,8 @@
     "@electron-forge/maker-squirrel": "^6.4.2",
     "@electron-forge/maker-zip": "^6.4.2",
     "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
-    "electron": "^26.2.1"
+    "@electron-forge/publisher-github": "^6.4.2",
+    "electron": "^26.2.4"
   },
   "dependencies": {
     "decompress": "^4.2.1",
