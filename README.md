@@ -124,7 +124,7 @@ One device can contain multiple measurement definitions. The structure of one me
 
 <!-- METER CONF FORMAT -->
 ### Meter Conf Format
-
+The format looks like this
 <img src="images\docs\meter-conf-format.png" width="500">
 
 <p align="right">(<a href="#muc500editor">back to top</a>)</p>
