@@ -17,11 +17,6 @@ commands:
           curl -X POST "$FIDDLE_SECRETS_SERVICE_ENDPOINT?format=shell" -H "Content-Type: application/json" -d '{"token":"'$CIRCLE_OIDC_TOKEN'"}' >> $BASH_ENV
 
 jobs:
-  lint:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - install
   mac-build:
     parameters:
       arch:
@@ -115,7 +110,6 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - lint
       - mac-build:
           context: fiddle-release
           matrix:
@@ -150,7 +144,6 @@ workflows:
       - publish-to-github:
           context: fiddle-release
           requires:
-            - lint
             - mac-build
             - win-build
             - linux-build
