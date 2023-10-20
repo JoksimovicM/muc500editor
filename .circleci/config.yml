@@ -11,8 +11,6 @@ commands:
           node-version: '18.17'
       - checkout
       - node/install-packages
-      - run: yarn run contributors
-      - run: yarn run electron-releases
   load-release-secrets:
     steps:
       - run: |
@@ -24,7 +22,6 @@ jobs:
       - image: cimg/base:stable
     steps:
       - install
-      - run: yarn run lint
   mac-build:
     parameters:
       arch:
@@ -34,7 +31,6 @@ jobs:
     steps:
       - install
       - load-release-secrets
-      - run: chmod +x tools/add-macos-cert.sh && ./tools/add-macos-cert.sh
       - run: npx yarn run publish --arch=<< parameters.arch >> --dry-run
       - store_artifacts:
           path: out
@@ -52,12 +48,6 @@ jobs:
     executor: node/windows
     steps:
       - install
-      - run:
-          name: Write signing cert to disk
-          command: |
-            set -e
-            WINDOWS_CODESIGN_FILE=$(npx ts-node ./tools/add-windows-cert.ts)
-            echo "export WINDOWS_CODESIGN_FILE=\"$WINDOWS_CODESIGN_FILE\"" >> $BASH_ENV
       - run: npx yarn run publish --arch=<< parameters.arch >> --dry-run
       - store_artifacts:
           path: out
